@@ -16,3 +16,18 @@ class LinkedList:
             # esse while vai iterando a lista
             print(temp.value)
             temp = temp.next
+
+    def prepend(self, value):
+        new_node = Node(value)
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+        self.length += 1
+        return True
+
+my_linked_list = LinkedList(4)
+my_linked_list.prepend(2)
+my_linked_list.print_list()
