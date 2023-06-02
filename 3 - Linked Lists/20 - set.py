@@ -36,7 +36,7 @@ class LinkedList:
             temp = temp.next
         return temp
     
-    def set(self, index, value):
+    def set_value(self, index, value):
         temp = self.get(index)
         if temp:
             temp.value = value

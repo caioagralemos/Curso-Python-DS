@@ -15,6 +15,14 @@ class LinkedList:
         while temp is not None:
             print(temp.value)
             temp = temp.next
+
+    def get(self, index):
+        if index > self.length - 1 or index < 0:
+            return False
+        temp = self.head
+        for _ in range(index):
+            temp = temp.next
+        return temp
     
     def append(self, value):
         new_node = Node(value)
@@ -28,17 +36,14 @@ class LinkedList:
             self.length += 1
         return True
     
-    def get(self, index):
-        if index > self.length - 1 or index < 0:
-            return None
+    def reverse(self):
         temp = self.head
-        for _ in range(index):
-            temp = temp.next
-        return temp
-
-my_linked_list = LinkedList(4)
-my_linked_list.append(6)
-my_linked_list.append(7)
-my_linked_list.append(8)
-print(my_linked_list.print_list())
-print(my_linked_list.get(2))
+        self.head = self.tail
+        self.tail = temp
+        before = None
+        after = temp.next
+        for _ in range(self.length):
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
