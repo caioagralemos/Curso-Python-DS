@@ -34,17 +34,17 @@ class Stack:
 
 def sort_stack(stack):
     sorted_stack = Stack()
-    while stack:
+    
+    while not stack.is_empty():
         temp = stack.pop()
-        while sorted_stack != [] and sorted_stack.stack_list[-1] > temp:
+        
+        while not sorted_stack.is_empty() and sorted_stack.peek() > temp:
             stack.push(sorted_stack.pop())
-            sorted_stack.push(temp)
-    while sorted_stack != []:
+        
+        sorted_stack.push(temp)
+                
+    while not sorted_stack.is_empty():
         stack.push(sorted_stack.pop())
-
-
-
-
 
 my_stack = Stack()
 my_stack.push(3)

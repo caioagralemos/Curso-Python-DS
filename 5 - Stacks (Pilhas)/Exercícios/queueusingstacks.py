@@ -4,7 +4,19 @@ class MyQueue:
         self.stack2 = []
         
     def enqueue(self,value):
-        
+        while len(self.stack1) > 0:
+            self.stack2.append(self.stack1.pop())
+        self.stack1.append(value)
+        while len(self.stack2) > 0:
+            self.stack1.append(self.stack2.pop())
+    
+    def dequeue(self):
+        if len(self.stack1) > 0:
+            return self.stack1.pop()
+    
+    def print_stack(self):
+        for i in range(len(self.stack1)-1, -1, -1):
+            print(self.stack1[i])
 
     def peek(self):
         return self.stack1[-1]
@@ -21,6 +33,8 @@ q = MyQueue()
 q.enqueue(1)
 q.enqueue(2)
 q.enqueue(3)
+
+q.print_stack()
 
 # Output the front of the queue
 print("Front of the queue:", q.peek())
